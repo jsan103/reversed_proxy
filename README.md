@@ -1,3 +1,5 @@
+### Methods
+
 GET
 curl -X POST http://localhost:3000/api/proxy -H "Content-Type: application/json" -d '{"url": "https://jsonplaceholder.typicode.com/todos/1", "method": "GET"}'
 
@@ -11,12 +13,13 @@ DELETE
 curl -X POST http://localhost:3000/api/proxy -H "Content-Type: application/json" -d '{"url": "https://jsonplaceholder.typicode.com/posts/1", "method": "DELETE"}'
 
 
+### Docker
 
 docker-compose build
 docker-compose up -d
 docker-compose down
 
-aws configure
+### AWS configure
 --> IAM for id and secret
 --> Create ECR repository
 
