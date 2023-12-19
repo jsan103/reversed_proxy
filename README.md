@@ -1,25 +1,57 @@
-### Methods
+## Methods
 
-GET
-curl -X POST http://localhost:3000/api/proxy -H "Content-Type: application/json" -d '{"url": "https://jsonplaceholder.typicode.com/todos/1", "method": "GET"}'
+### HEALTH CHECK
+curl --location 'http://localhost:8080/health' \
+--header 'Content-Type: application/json'
 
-POST
-curl -X POST http://localhost:3000/api/proxy -H "Content-Type: application/json" -d '{"url": "https://jsonplaceholder.typicode.com/posts", "method": "POST", "body": {"title": "foo", "body": "bar", "userId": 1}}'
+### GET
+curl --location 'http://localhost:8080/api/proxy' \
+--header 'Content-Type: application/json' \
+--data '{
+    "url": "https://reqres.in/api/users?page=2",
+    "method": "GET"
+}'
 
-PUT
-curl -X POST http://localhost:3000/api/proxy -H "Content-Type: application/json" -d '{"url": "https://jsonplaceholder.typicode.com/posts/1", "method": "PUT", "body": {"id": 1, "title": "foo", "body": "bar", "userId": 1}}'
+### POST
+curl --location 'http://localhost:8080/api/proxy' \
+--header 'Content-Type: application/json' \
+--data '{
+    "url": "https://reqres.in/api/users",
+    "method": "POST",
+    "body": {
+        "name": "morpheus",
+        "job": "leader"
+    }
+}'
 
-DELETE
-curl -X POST http://localhost:3000/api/proxy -H "Content-Type: application/json" -d '{"url": "https://jsonplaceholder.typicode.com/posts/1", "method": "DELETE"}'
+### PUT
+curl --location 'http://localhost:8080/api/proxy' \
+--header 'Content-Type: application/json' \
+--data '{
+    "url": "https://reqres.in/api/users/2",
+    "method": "PUT",
+    "body": {
+        "name": "morpheus",
+        "job": "zion resident"
+    }
+}'
+
+### DELETE
+curl --location 'http://localhost:8080/api/proxy' \
+--header 'Content-Type: application/json' \
+--data '{
+    "url": "https://reqres.in/api/users/2",
+    "method": "DELETE"
+}'
 
 
-### Docker
+## Docker
 
 docker-compose build
 docker-compose up -d
 docker-compose down
 
-### AWS configure
+## AWS configure
 --> IAM for id and secret
 --> Create ECR repository
 
